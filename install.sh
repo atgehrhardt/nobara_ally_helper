@@ -24,13 +24,13 @@ mv $ROGUE_ENEMY_FILE RPM/$ROGUE_ENEMY_FILE
 
 # Change into RPM directory and install RPMs
 cd RPM
-sudo dnf install *.rpm
+sudo dnf install -y *.rpm
 
 # Install Corando98's Steam Patch fork
-curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
+curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | yes | sh
 
-# Install asusctl package
-sudo dnf install asusctl
+# Install asusctl package 
+sudo dnf install -y asusctl 
 
 # Clean up file
 cd ~/Downloads
