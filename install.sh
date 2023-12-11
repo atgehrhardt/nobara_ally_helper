@@ -2,11 +2,11 @@
 
 # Specifies which kernel and rogue-enemy version to download
 KERNEL_FILE="kernel-6.6.4-205.fsync.ally.fc38.x86_64.tar.gz"
-KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.1.0/$KERNEL_FILE"
+KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.1.0/kernel-6.6.4-205.fsync.ally.fc38.x86_64.tar.gz"
 ROGUE_ENEMY_FILE="rogue-enemy-1.5.0-1.fc38.x86_64.rpm"
-ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.1.0/$ROGUE_ENEMY_FILE"
+ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.1.0/rogue-enemy-1.5.0-1.fc38.x86_64.rpm"
 
-# Obtain elevated privileges
+# Obtain elevated priviledges
 sudo -v
 
 # Change to Downloads directory
@@ -26,17 +26,13 @@ mv $ROGUE_ENEMY_FILE RPM/$ROGUE_ENEMY_FILE
 cd RPM
 sudo dnf install -y *.rpm
 
-# Download and install Corando98's Steam Patch fork with specific responses
-curl -L https://github.com/corando98/steam-patch/raw/main/install.sh -o steam-patch.sh
-{
-echo "yes"  # Response to the first prompt
-echo "1"    # Response to the second prompt
-} | sh steam-patch.sh
+# Install Corando98's Steam Patch fork
+curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
 
-# Install asusctl package 
+# Install asusctl package
 sudo dnf install -y asusctl 
 
-# Clean up files
+# Clean up file
 cd ~/Downloads
 rm -rf RPM
 rm $KERNEL_FILE
