@@ -12,7 +12,7 @@ This should result in an installation with functional side and back buttons, as 
 
 ## Installation
 Open a terminal and run this simple command. It will ask you for your password, then just sit back for a few minutes. After reboot, your Ally is ready to rock: 
-    `curl -sSL https://raw.githubusercontent.com/atgehrhardt/nobara_ally_helper/master/install.sh | sh`
+    `curl -sSL https://raw.githubusercontent.com/TaitTechMedia/nobara_ally_helper/master/install.sh | sh`
 
 ## Credit
 Jlobue10 for his packaging and patching efforts for Nobara: https://github.com/jlobue10/ALLY_Nobara_fixes
