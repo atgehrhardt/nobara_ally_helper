@@ -28,7 +28,7 @@ sudo dnf install -y *.rpm
 
 # Install Corando98's Steam Patch fork
 curl -L https://github.com/corando98/steam-patch/raw/main/install.sh -o steam-patch.sh
-yes | sh steam-patch.sh
+sh steam-patch.sh
 
 # Install asusctl package 
 sudo dnf install -y asusctl 
