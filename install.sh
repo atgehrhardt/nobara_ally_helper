@@ -20,7 +20,7 @@ wget $ROGUE_ENEMY_URL --content-disposition
 tar xvf $KERNEL_FILE
 
 # Move rogue-enemy into RPM directory
-mv $ROGUE_ENEMY_FILE RPM/$ROGUE_ENEMY_FILE
+sudo dnf install ~/Downloads/$ROGUE_ENEMY_FILE
 
 # Change into RPM directory and install RPMs
 cd RPM
