@@ -6,7 +6,7 @@ KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.2
 ROGUE_ENEMY_FILE="rogue-enemy-1.5.1-1.fc38.x86_64.rpm"
 ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.2.0/rogue-enemy-1.5.1-1.fc38.x86_64.rpm"
 
-# Obtain elevated priviledges
+# Obtain elevated privileges
 sudo -v
 
 # Change to Downloads directory
@@ -27,13 +27,22 @@ sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
 cd RPM
 sudo dnf install -y *.rpm
 
-# Install Corando98's Steam Patch fork
-curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
+# Download Corando98's Steam Patch install script
+curl -L -o steam-patch-install.sh https://github.com/corando98/steam-patch/raw/main/install.sh
+chmod +x steam-patch-install.sh
+
+# Use expect to run the Steam Patch install script
+set timeout -1  # Wait indefinitely for a prompt
+# This loop will match any output and respond with Enter
+expect {
+    -re .* { send "\r"; exp_continue }
+}
+EOF
 
 # Install asusctl package
 sudo dnf install -y asusctl 
 
-# Clean up file
+# Clean up files
 cd ~/Downloads
 rm -rf RPM
 rm $KERNEL_FILE
