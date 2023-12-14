@@ -31,8 +31,11 @@ sudo dnf install -y *.rpm
 curl -L -o steam-patch-install.sh https://github.com/corando98/steam-patch/raw/main/install.sh
 chmod +x steam-patch-install.sh
 
-# Use expect to run the Steam Patch install script
+# Use expect to run the Steam Patch install script and press Enter for every prompt
+/usr/bin/expect <<EOF
+spawn sh steam-patch-install.sh
 set timeout -1  # Wait indefinitely for a prompt
+
 # This loop will match any output and respond with Enter
 expect {
     -re .* { send "\r"; exp_continue }
