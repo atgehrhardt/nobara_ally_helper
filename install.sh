@@ -42,11 +42,5 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install mengmeet's Power Control plugin
 curl -L https://raw.githubusercontent.com/mengmeet/PowerControl/main/install.sh | sh
 
-# Disable udev rule for generic xbox controller by adding .backup, can simply remove this to re-enable - /etc/udev/rules.d/50-generic-xbox360-controller.rules
-sudo mv /etc/udev/rules.d/50-generic-xbox360-controller.rules /etc/udev/rules.d/50-generic-xbox360-controller.rules.backup
-
-# Add new rule to completely block xbox controllers - /etc/udev/rules.d/99-xbox-blocker.rules
-echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", RUN+="/bin/sh -c '\''echo 0 >/sys/$devpath/authorized'\''"' | sudo tee /etc/udev/rules.d/99-xbox-blocker.rules > /dev/null
-
 # Reboot the system
 reboot
