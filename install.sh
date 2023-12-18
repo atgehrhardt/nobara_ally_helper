@@ -46,29 +46,7 @@ curl -L https://raw.githubusercontent.com/mengmeet/PowerControl/main/install.sh 
 sudo mv /etc/udev/rules.d/50-generic-xbox360-controller.rules /etc/udev/rules.d/50-generic-xbox360-controller.rules.backup
 
 # Add new rule to completely block xbox controllers - /etc/udev/rules.d/49-xbox-blocker.rules
-echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", RUN+="/bin/sh -c '\''echo 0 >/sys/$devpath/authorized'\''"' | sudo tee /etc/udev/rules.d/45-xbox-blocker.rules > /dev/null
-
-# Remove rogue-enemy.service and re-create with ExecStartPre sleep of 10 seconds
-sudo rm /etc/systemd/system/rogue-enemy.service
-
-sudo bash -c 'cat << 'EOF' > /etc/systemd/system/rogue-enemy.service
-[Unit]
-Description=ROGueENEMY service
-
-[Service]
-Type=simple
-Nice=-5
-IOSchedulingClass=best-effort
-IOSchedulingPriority=0
-Restart=always
-RestartSec=5
-WorkingDirectory=/usr/bin
-ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/rogue-enemy
-
-[Install]
-WantedBy=multi-user.target
-EOF'
+echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", RUN+="/bin/sh -c '\''echo 0 >/sys/$devpath/authorized'\''"' | sudo tee /etc/udev/rules.d/99-xbox-blocker.rules > /dev/null
 
 # Reboot the system
 reboot
