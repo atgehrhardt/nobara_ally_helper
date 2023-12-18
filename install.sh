@@ -43,13 +43,5 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install mengmeet's Power Control plugin
 curl -L https://raw.githubusercontent.com/mengmeet/PowerControl/main/install.sh | sh
 
-# Add new rule to completely block xbox controllers - /etc/udev/rules.d/99-xbox-blocker.rules
-echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", RUN+="/bin/sh -c '\''echo 0 >/sys/$devpath/authorized'\''"' | sudo tee /etc/udev/rules.d/99-xbox-blocker.rules > /dev/null
-
-# Adjust grub to use correct patched kernel
-sudo cp /etc/default/grub /etc/default/grub.bak
-sudo sed -i 's/GRUB_DEFAULT=.*/GRUB_DEFAULT='\'''"$KERNEL_NAME"'\''/' /etc/default/grub
-sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
-
 # Reboot the system
 reboot
