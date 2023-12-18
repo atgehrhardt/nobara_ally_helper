@@ -1,10 +1,11 @@
 #!/bin/bash
 
 # Specifies which kernel and rogue-enemy version to download
-KERNEL_FILE="kernel-6.6.7-202.fsync.ally.fc38.x86_64.tar.gz"
 KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.2.0/kernel-6.6.7-202.fsync.ally.fc38.x86_64.tar.gz"
-ROGUE_ENEMY_FILE="rogue-enemy-1.5.1-1.fc38.x86_64.rpm"
 ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.2.0/rogue-enemy-1.5.1-1.fc38.x86_64.rpm"
+KERNEL_FILE="${KERNEL_URL##*/}"
+KERNEL_NAME="${KERNEL_FILE%.tar.gz}"
+ROGUE_ENEMY_FILE="${ROGUE_ENEMY_URL##*/}"
 
 # Obtain elevated priviledges
 sudo -v
