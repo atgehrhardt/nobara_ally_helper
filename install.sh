@@ -43,5 +43,8 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install mengmeet's Power Control plugin
 curl -L https://raw.githubusercontent.com/mengmeet/PowerControl/main/install.sh | sh
 
+# Install grub customizer
+sudo dnf install grub-customizer
+
 # Reboot the system
 reboot
