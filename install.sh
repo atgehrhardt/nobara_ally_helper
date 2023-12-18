@@ -47,7 +47,7 @@ curl -L https://raw.githubusercontent.com/mengmeet/PowerControl/main/install.sh 
 # Remove rogue-enemy.service and re-create with ExecStartPre sleep of 10 seconds
 sudo rm /etc/systemd/system/rogue-enemy.service
 
-cat << 'EOF' > /etc/systemd/system/rogue-enemy.service
+sudo bash -c 'cat << 'EOF' > /etc/systemd/system/rogue-enemy.service
 [Unit]
 Description=ROGueENEMY service
 
@@ -64,7 +64,7 @@ ExecStart=/usr/bin/rogue-enemy
 
 [Install]
 WantedBy=multi-user.target
-EOF
+EOF'
 
 # Install grub customizer
 sudo dnf install grub-customizer
