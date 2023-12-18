@@ -51,7 +51,7 @@ echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}
 # Remove rogue-enemy.service and re-create with ExecStartPre sleep of 10 seconds
 sudo rm /etc/systemd/system/rogue-enemy.service
 
-cat << 'EOF' > /etc/systemd/system/rogue-enemy.service
+sudo bash -c 'cat << 'EOF' > /etc/systemd/system/rogue-enemy.service
 [Unit]
 Description=ROGueENEMY service
 
@@ -68,7 +68,7 @@ ExecStart=/usr/bin/rogue-enemy
 
 [Install]
 WantedBy=multi-user.target
-EOF
+EOF'
 
 # Reboot the system
 reboot
