@@ -27,17 +27,26 @@ sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
 cd RPM
 sudo dnf install -y *.rpm
 
-# Install Corando98's Steam Patch fork
-curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
-
-# Install asusctl package
-sudo dnf install -y asusctl 
-
 # Clean up file
 cd ~/Downloads
 rm -rf RPM
 rm $KERNEL_FILE
 rm $ROGUE_ENEMY_FILE
+
+# Install asusctl package
+sudo dnf install -y asusctl 
+
+# Install decky loader
+curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/download/install_release.sh | sh
+
+# Install mengmeet's Power Control plugin
+curl -L https://raw.githubusercontent.com/mengmeet/PowerControl/main/install.sh | sh
+
+# Disable udev rule for generic xbox controller by adding .backup, can simply remove this to re-enable - /etc/udev/rules.d/50-generic-xbox360-controller.rules
+sudo mv /etc/udev/rules.d/50-generic-xbox360-controller.rules /etc/udev/rules.d/50-generic-xbox360-controller.rules.backup
+
+# Add new rule to completely block xbox controllers - /etc/udev/rules.d/49-xbox-blocker.rules
+echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", RUN+="/bin/sh -c '\''echo 0 >/sys/$devpath/authorized'\''"' > /etc/udev/rules.d/49-xbox-blocker.rules
 
 # Reboot the system
 reboot
