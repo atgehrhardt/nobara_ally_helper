@@ -48,7 +48,7 @@ echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}
 
 # Adjust grub to use correct patched kernel
 sudo cp /etc/default/grub /etc/default/grub.bak
-sudo sed -i 's/GRUB_DEFAULT=.*/GRUB_DEFAULT='$KERNEL_NAME'/' /etc/default/grub
+sudo sed -i 's/GRUB_DEFAULT=.*/GRUB_DEFAULT='\'''"$KERNEL_NAME"'\''/' /etc/default/grub
 sudo grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # Reboot the system
