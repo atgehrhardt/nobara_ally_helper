@@ -66,8 +66,8 @@ WantedBy=multi-user.target
 EOF'
 
 # Set grub order to second kernel as the curren Nobara installation uses 1 version newer than patched kernel
-sudo sed -i '1s/.*/GRUB_DEFAULT=1/' /etc/default/grub
-sudo grub2-mkconfig -o /boot/grub2/grub.cfg
+sudo sed -i "1s/.*/GRUB_DEFAULT=$KERNEL_NAME/" /etc/default/grub
+sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # Reboot the system
 reboot
