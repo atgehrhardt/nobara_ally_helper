@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specifies which kernel and rogue-enemy version to download
-KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.2.0/kernel-6.6.7-202.fsync.ally.fc38.x86_64.tar.gz"
+KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.2.0/kernel-6.6.7-203.fsync.ally.fc38.x86_64.tar.gz"
 ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.2.0/rogue-enemy-1.5.1-1.fc38.x86_64.rpm"
 KERNEL_FILE="${KERNEL_URL##*/}"
 KERNEL_NAME="${KERNEL_FILE%.tar.gz}"
@@ -65,8 +65,11 @@ ExecStart=/usr/bin/rogue-enemy
 WantedBy=multi-user.target
 EOF'
 
+# Install emudeck
+sh -c 'curl -L https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash'
+
 # Set grub order to second kernel as the curren Nobara installation uses 1 version newer than patched kernel
-sudo awk 'NR==1 {$0="GRUB_DEFAULT=1"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
+sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # Reboot the system
