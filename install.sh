@@ -80,7 +80,6 @@ sudo mv /etc/udev/rules.d/50-generic-xbox360-controller.rules /etc/udev/rules.d/
 
 # Ask user if they are ready for reboot
 echo "Press enter to reboot"
-read -p "Press [Enter] key to reboot..."
 
 # Reboot the system
 reboot
