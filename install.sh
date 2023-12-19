@@ -65,6 +65,9 @@ ExecStart=/usr/bin/rogue-enemy
 WantedBy=multi-user.target
 EOF'
 
+# Udev rule to blacklist xbox360 controllers
+echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", RUN+="/bin/sh -c '\''echo 0 >/sys/$devpath/authorized'\''"' | sudo tee /etc/udev/rules.d/99-xbox-blocker.rules > /dev/null
+
 # Set grub order to second kernel as the curren Nobara installation uses 1 version newer than patched kernel
 sudo sed -i "1s/.*/GRUB_DEFAULT=$KERNEL_NAME/" /etc/default/grub
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
