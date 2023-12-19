@@ -65,8 +65,5 @@ ExecStart=/usr/bin/rogue-enemy
 WantedBy=multi-user.target
 EOF'
 
-# Install grub customizer
-sudo dnf install grub-customizer
-
 # Reboot the system
 reboot
