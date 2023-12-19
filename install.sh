@@ -66,20 +66,11 @@ WantedBy=multi-user.target
 EOF'
 
 # Set grub order to second kernel as the curren Nobara installation uses 1 version newer than patched kernel
-sudo bash -c "awk -v kernelName='$KERNEL_NAME' '{
-    if (\$1 == \"GRUB_DEFAULT=\")
-        print \"GRUB_DEFAULT=\" kernelName;
-    else 
-        print \$0; 
-}' /etc/default/grub > /tmp/grub.new"
-sudo mv /tmp/grub.new /etc/default/grub
+sudo awk 'NR==1 {$0="GRUB_DEFAULT=1"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # Disable the udev rule that maps the virtual xbox 360 controller
 sudo mv /etc/udev/rules.d/50-generic-xbox360-controller.rules /etc/udev/rules.d/50-generic-xbox360-controller.rules.bak
-
-# Ask user if they are ready for reboot
-echo "Press enter to reboot"
 
 # Reboot the system
 reboot
