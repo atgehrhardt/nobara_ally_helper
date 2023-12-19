@@ -69,5 +69,8 @@ EOF'
 sudo sed -i "1s/.*/GRUB_DEFAULT=1" /etc/default/grub
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
+# Disable the udev rule that maps the virtual xbox 360 controller
+sudo mv /etc/udev/rules.d/50-generic-xbox360-controller.rules /etc/udev/rules.d/50-generic-xbox360-controller.rules.bak
+
 # Reboot the system
 reboot
