@@ -65,9 +65,6 @@ ExecStart=/usr/bin/rogue-enemy
 WantedBy=multi-user.target
 EOF'
 
-# Install emudeck
-sh -c 'curl -L https://raw.githubusercontent.com/dragoonDorise/EmuDeck/main/install.sh | bash'
-
 # Set grub order to second kernel as the curren Nobara installation uses 1 version newer than patched kernel
 sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
