@@ -43,7 +43,6 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install mengmeet's Power Control plugin
 curl -L https://raw.githubusercontent.com/mengmeet/PowerControl/main/install.sh | sh
 
-# Add 10 second sleep to Rogue Enemy
 # Remove rogue-enemy.service and re-create with ExecStartPre sleep of 10 seconds
 sudo rm /etc/systemd/system/rogue-enemy.service
 

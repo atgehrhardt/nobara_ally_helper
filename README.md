@@ -13,9 +13,7 @@ This should result in an installation with functional side and back buttons, as 
 7) Reboots ROG Ally
 
 ## Installation
-IMPORTANT: If Nobara defaults to a newer kernel, go to desktop mode and use the Grub Customizer app the set the appropriate kernel.
-
-Open a terminal and run this simple command. It will ask you for your password, then just follow the prompts and enter "y" when prompted and "1" if you are presented with any options. Once the script is done it will reboot. After reboot, your Ally is ready to rock: 
+Open a terminal and run this simple command. It will ask you for your password. Enter this and press 'enter'. It is normal that you do not see your password while typing.
     `curl -sSL https://raw.githubusercontent.com/TaitTechMedia/nobara_ally_helper/master/install.sh | sh`
 
 ## Credit
