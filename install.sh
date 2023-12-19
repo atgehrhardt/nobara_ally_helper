@@ -72,5 +72,8 @@ sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 # Disable the udev rule that maps the virtual xbox 360 controller
 sudo mv /etc/udev/rules.d/50-generic-xbox360-controller.rules /etc/udev/rules.d/50-generic-xbox360-controller.rules.bak
 
+# Add udev rule to block xbox360 controller
+echo 'ACTION=="add", SUBSYSTEM=="usb", ATTRS{idVendor}=="045e", ATTRS{idProduct}=="028e", RUN+="/bin/sh -c '\''echo 0 >/sys/$devpath/authorized'\''"' | sudo tee /etc/udev/rules.d/99-xbox-blocker.rules > /dev/null
+
 # Reboot the system
 reboot
