@@ -26,9 +26,13 @@ else
 fi
 
 # Optional install of auto-cpu freq set variable
-echo "Do you want to install auto-cpu freq? This tool will override certain controls associated with Power Control."
-echo "If you enable this tool, please do not adjust any of the Power Control specific settings in Decky Loader."
-echo "We still install Power Control as this unlocks the full TDP slider in GameScope which you CAN still use."
+echo "EXPERIMENTAL: DISABLE POWER CONTROL IF USING THIS, IT WILL CAUSE ISSUES!"
+echo "If you do not know whether to install this or not, please select N, this is for advanced users."
+echo " "
+echo "wo you want to install auto-cpu freq? This tool will override certain controls associated with Power Control."
+echo "wf you enable this tool, please do not adjust any of the Power Control specific settings in Decky Loader."
+echo "we still install Power Control as this unlocks the full TDP slider in GameScope which you CAN still use, however,"
+echo "it is highly recommended to NOT install this package if you intend to use Power Control"
 read -p "Do you want to install this package? (y/n): " auto_cpu_freq
 
 # Change to Downloads directory
