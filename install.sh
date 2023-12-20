@@ -64,7 +64,7 @@ IOSchedulingPriority=0
 Restart=always
 RestartSec=5
 WorkingDirectory=/usr/bin
-ExecStartPre=/bin/sleep 5
+ExecStartPre=/bin/sleep 15
 ExecStart=/usr/bin/rogue-enemy
 
 [Install]
