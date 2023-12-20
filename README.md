@@ -6,7 +6,7 @@ This should result in an installation with functional side and back buttons, as 
 ## This script does a few things
 1) Installs kernel 6.6.7-202 from Jlobue10 repo
 2) Installs rougenemy 1.5.1-1 from Jlobue10 repo
-3) Adjusts rogue-enemy.service to add a 15 second delay to allow MCU to initialize properly
+3) Adjusts rogue-enemy.service to add a 10 second delay to allow MCU to initialize properly
 4) Installs Deckyloader
 5) Installs mengmeet's Power Control
 6) Install Asusctl
