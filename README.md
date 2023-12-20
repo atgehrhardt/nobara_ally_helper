@@ -19,7 +19,7 @@ Open a terminal and run this simple command. It will ask you for your password. 
 
 ***IMPORTANT:*** *If you do not have back padals working (You see a DualShock 4 and NOT a DualSense controller in Steam), simply switch to desktop mode and then back to game mode and it will show up correctly. You should only ever have to do this if your system dies or you do a full restart.*
 
-## Credit
+## Reference
 Jlobue10 for his packaging and patching efforts for Nobara: https://github.com/jlobue10/ALLY_Nobara_fixes
 NeroReflex for rouge-enemy: https://github.com/NeroReflex/ROGueENEMY
 mengmeet for his Power Control deckyloader plugin: https://github.com/mengmeet/PowerControl
