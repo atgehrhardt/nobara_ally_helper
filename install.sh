@@ -88,4 +88,7 @@ sudo awk 'NR==1 {$0="GRUB_DEFAULT=1"} {print}' /etc/default/grub > temp_file && 
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # Reboot the system
-reboot
+read -p "Are you ready to reboot your Ally? (y/n): " ready_reboot
+if [[ $ready_reboot == "y" || $ready_reboot == "Y" ]]; then
+    reboot
+fi
