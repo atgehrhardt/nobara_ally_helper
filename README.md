@@ -24,3 +24,4 @@ Jlobue10 for his packaging and patching efforts for Nobara: https://github.com/j
 NeroReflex for rouge-enemy: https://github.com/NeroReflex/ROGueENEMY
 mengmeet for his Power Control deckyloader plugin: https://github.com/mengmeet/PowerControl
 Corando98 for his Steam Patch fork: https://github.com/corando98/steam-patch
+AdnanHodzic for his auto-cpufreq: https://github.com/AdnanHodzic/auto-cpufreq
