@@ -10,6 +10,12 @@ ROGUE_ENEMY_FILE="${ROGUE_ENEMY_URL##*/}"
 # Obtain elevated priviledges
 sudo -v
 
+# Optional install of auto-cpu freq set variable
+read -p "Do you want to install auto-cpu freq? This tool will override certain controls associated with Power Control 
+such as controlling CPU boost and cores. If you enable this tool, please do not adjust any of the Power Control specific
+settings in Decky Loader. We still install Power Control as this unlocks the full TDP slider in GameScope which you CAN
+still use. Do you want to install this package? (y/n): " auto_cpu_freq
+
 # Change to Downloads directory
 cd ~/Downloads
 
@@ -64,6 +70,18 @@ ExecStart=/usr/bin/rogue-enemy
 [Install]
 WantedBy=multi-user.target
 EOF'
+
+# Check the user input for auto-cpu freq install
+if [[ $auto_cpu_freq == "y" || $auto_cpu_freq == "Y" ]]; then
+    cd ~/Downloads
+    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+    cd auto-cpufreq && sudo ./auto-cpufreq-installer
+    rm ~/Downloads/auto-cpufreq
+fi
+
+# Wifi speed improvement
+echo "@nClientDownloadEnableHTTP2PlatformLinux 0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
+echo "@fDownloadRateImprovementToAddAnotherConnection 1.0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
 
 # Set grub order to second kernel as the curren Nobara installation uses 1 version newer than patched kernel
 sudo awk 'NR==1 {$0="GRUB_DEFAULT=1"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
