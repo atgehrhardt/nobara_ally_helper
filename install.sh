@@ -8,7 +8,22 @@ KERNEL_NAME="${KERNEL_FILE%.tar.gz}"
 ROGUE_ENEMY_FILE="${ROGUE_ENEMY_URL##*/}"
 
 # Obtain elevated priviledges
-sudo -v
+password=$(kdialog --password "Enter your sudo password")
+
+if [ -z "$password" ]; then
+    kdialog --error "No password entered. Exiting."
+    exit 1
+fi
+
+# Pass the password to sudo -v
+echo "$password" | sudo -Sv
+
+# Check if the password was correct
+if [ $? -eq 0 ]; then
+    kdialog --msgbox "Sudo authenticated successfully."
+else
+    kdialog --error "Sudo authentication failed."
+fi
 
 # Optional install of auto-cpu freq set variable
 echo "Do you want to install auto-cpu freq? This tool will override certain controls associated with Power Control."
