@@ -11,10 +11,10 @@ ROGUE_ENEMY_FILE="${ROGUE_ENEMY_URL##*/}"
 sudo -v
 
 # Optional install of auto-cpu freq set variable
-read -p "Do you want to install auto-cpu freq? This tool will override certain controls associated with Power Control 
-such as controlling CPU boost and cores. If you enable this tool, please do not adjust any of the Power Control specific
-settings in Decky Loader. We still install Power Control as this unlocks the full TDP slider in GameScope which you CAN
-still use. Do you want to install this package? (y/n): " auto_cpu_freq
+echo "Do you want to install auto-cpu freq? This tool will override certain controls associated with Power Control."
+echo "If you enable this tool, please do not adjust any of the Power Control specific settings in Decky Loader."
+echo "We still install Power Control as this unlocks the full TDP slider in GameScope which you CAN still use."
+read -p "Do you want to install this package? (y/n): " auto_cpu_freq
 
 # Change to Downloads directory
 cd ~/Downloads
