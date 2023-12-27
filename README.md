@@ -4,14 +4,12 @@ This is a simple script to simplify installation of the latest needed tools to g
 This should result in an installation with functional side and back buttons, as well as all necessary patches and optimizations for Nobara and the Gamescope interface. If you are noticing your Ally freeze when rebooting, simply reboot with it unplugged. Once it boots you can plug it back in.
 
 ## This script does a few things
-1) Installs kernel 6.6.7-202 from Jlobue10 repo
-2) Installs rougenemy 1.5.1-1 from Jlobue10 repo
+1) Installs kernel 6.6.7-205 from Jlobue10 repo
+2) Installs rougenemy 1.5.3-1 from Jlobue10 repo
 3) Adjusts rogue-enemy.service to add a 10 second delay to allow MCU to initialize properly
 4) Installs Deckyloader
-5) Installs mengmeet's Power Control
-6) Install Asusctl
-7) Optionally install auto-cpufreq
-8) Reboots ROG Ally
+5) Install Asusctl
+6) Reboots ROG Ally
 
 ## Installation
 Open a terminal and run this simple command. It will ask you for your password. Enter this and press 'enter'. It is normal that you do not see your password while typing.
