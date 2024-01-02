@@ -25,6 +25,16 @@ else
     kdialog --error "Sudo authentication failed."
 fi
 
+# Optional install of auto-cpu freq set variable
+echo "OPTIONAL INSTALL: THIS HAS THE POTENTIAL TO CAUSE DAMAGE TO YOUR DEVICE"
+echo "If you do not know whether to install this or not, please select N, this is for advanced users."
+echo " "
+echo "wo you want to install auto-cpu freq? This tool will override certain controls associated with Power Control."
+echo "wf you enable this tool, please do not adjust any of the Power Control specific settings in Decky Loader."
+echo "we still install Power Control as this unlocks the full TDP slider in GameScope which you CAN still use, however,"
+echo "it is highly recommended to NOT install this package if you intend to use Power Control"
+read -p "Do you want to install this package? (y/n): " auto_cpu_freq
+
 # Change to Downloads directory
 cd ~/Downloads
 
@@ -79,6 +89,14 @@ ExecStart=/usr/bin/rogue-enemy
 [Install]
 WantedBy=multi-user.target
 EOF'
+
+# Check the user input for auto-cpu freq install
+if [[ $auto_cpu_freq == "y" || $auto_cpu_freq == "Y" ]]; then
+    cd ~/Downloads
+    git clone https://github.com/AdnanHodzic/auto-cpufreq.git
+    cd auto-cpufreq && sudo ./auto-cpufreq-installer
+    rm ~/Downloads/auto-cpufreq
+fi
 
 # Wifi speed improvement
 echo "@nClientDownloadEnableHTTP2PlatformLinux 0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
