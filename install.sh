@@ -96,6 +96,7 @@ if [[ $auto_cpu_freq == "y" || $auto_cpu_freq == "Y" ]]; then
     git clone https://github.com/AdnanHodzic/auto-cpufreq.git
     cd auto-cpufreq && sudo ./auto-cpufreq-installer
     rm ~/Downloads/auto-cpufreq
+    sudo cpu-autofreq --install
 fi
 
 # Wifi speed improvement
