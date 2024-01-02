@@ -103,11 +103,19 @@ fi
 echo "@nClientDownloadEnableHTTP2PlatformLinux 0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
 echo "@fDownloadRateImprovementToAddAnotherConnection 1.0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
 
-#KDE Virtual Keyboard Fix
+# KDE Virtual Keyboard Fix
 mkdir -p ~/.config/plasma_mobile-workspace/env/ && echo -e '#!/bin/bash\nunset GTK_IM_MODULE\nunset QT_IM_MODULE' > ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh && chmod +x ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh && sh ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
 
-#Fingerprint sensor power drain issue fix
+# Fingerprint sensor power drain issue fix
 sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\", ATTR{idVendor}==\"1c7a\", ATTR{idProduct}==\"0588\", ATTR{power/control}=\"auto\"" > /etc/udev/rules.d/50-fingerprint.rules'
+
+# Fix power key not triggering sleep
+if [ -e "/etc/systemd/logind.conf.d/00-handheld-power.conf" ]; then
+    sudo sed -i 's/^HandlePowerKey=.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf.d/00-handheld-power.conf
+    echo "HandlePowerKey updated to 'suspend'"
+else
+    echo "The configuration file '/etc/systemd/logind.conf.d/00-handheld-power.conf' does not exist."
+fi
 
 # Set grub order to proper kernel as the curren Nobara installation uses 1 version newer than patched kernel
 sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
