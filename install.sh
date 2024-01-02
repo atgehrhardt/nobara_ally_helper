@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Specifies which kernel and rogue-enemy version to download
-KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.3.0/kernel-6.6.7-205.fsync.ally.fc38.x86_64.tar.gz"
-ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.3.0/rogue-enemy-1.5.3-1.fc38.x86_64.rpm"
+KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.4.0/kernel-6.6.9-200.fsync.ally.fc39.x86_64.tar.gz"
+ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.4.0/rogue-enemy-1.5.4-1.fc39.x86_64.rpm"
 KERNEL_FILE="${KERNEL_URL##*/}"
 KERNEL_NAME="${KERNEL_FILE%.tar.gz}"
 ROGUE_ENEMY_FILE="${ROGUE_ENEMY_URL##*/}"
@@ -84,7 +84,7 @@ EOF'
 echo "@nClientDownloadEnableHTTP2PlatformLinux 0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
 echo "@fDownloadRateImprovementToAddAnotherConnection 1.0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
 
-# Set grub order to second kernel as the curren Nobara installation uses 1 version newer than patched kernel
+# Set grub order to proper kernel as the curren Nobara installation uses 1 version newer than patched kernel
 sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
