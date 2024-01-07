@@ -73,11 +73,11 @@ mkdir -p ~/.config/plasma_mobile-workspace/env/ && echo -e '#!/bin/bash\nunset G
 sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\", ATTR{idVendor}==\"1c7a\", ATTR{idProduct}==\"0588\", ATTR{power/control}=\"auto\"" > /etc/udev/rules.d/50-fingerprint.rules'
 
 # Fix power key not triggering sleep
-if [ -e "/etc/systemd/logind.conf.d/00-handheld-power.conf" ]; then
-    sudo sed -i 's/^HandlePowerKey=.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf.d/00-handheld-power.conf
+if [ -e "/etc/systemd/logind.conf" ]; then
+    sudo sed -i 's/^HandlePowerKey=.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
     echo "HandlePowerKey updated to 'suspend'"
 else
-    echo "The configuration file '/etc/systemd/logind.conf.d/00-handheld-power.conf' does not exist."
+    echo "The configuration file '/etc/systemd/logind.conf' does not exist."
 fi
 
 # Set grub order to proper kernel as the curren Nobara installation uses 1 version newer than patched kernel
