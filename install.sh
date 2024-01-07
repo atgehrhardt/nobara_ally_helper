@@ -39,6 +39,10 @@ tar xvf $KERNEL_FILE
 sudo rpm -e rogue-enemy
 sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
 
+# Start & Enable Rogue Enemy Service
+sudo systemctl start rogue-enemy.service
+sudo systemctl enable rogue-enemy.service
+
 # Change into RPM directory and install RPMs
 cd RPM
 sudo dnf install -y *.rpm
