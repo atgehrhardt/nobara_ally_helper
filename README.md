@@ -3,6 +3,10 @@ This is a simple script to simplify installation of the latest needed tools to g
 
 This should result in an installation with functional side and back buttons, as well as all necessary patches and optimizations for Nobara and the Gamescope interface. If you are noticing your Ally freeze when rebooting, simply reboot with it unplugged. Once it boots you can plug it back in.
 
+# Notes
+
+I highly recommend you use a TDP limit of 11 watts outside of games as this will provide a very smooth experience with extremely low wattage
+
 ## This script does a few things
 1) Installs kernel 6.6.9-200 from Jlobue10 repo
 2) Installs rougenemy 1.5.4-1 from Jlobue10 repo
