@@ -58,6 +58,8 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install Corando98's Steam Patch
 curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
 
+# Install dependencies for Rogue Enemy 2.0.0
+
 # Remove rogue-enemy.service and re-create with ExecStartPre sleep of 10 seconds
 sudo rm /etc/systemd/system/rogue-enemy.service
 
