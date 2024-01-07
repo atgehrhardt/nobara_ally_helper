@@ -35,13 +35,14 @@ wget $ROGUE_ENEMY_URL --content-disposition
 # Extract tar.gz file
 tar xvf $KERNEL_FILE
 
-# Update Rogue Enemy
-sudo rpm -e rogue-enemy
-sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
-
 # Change into RPM directory and install RPMs
 cd RPM
 sudo dnf install -y *.rpm
+
+# Update Rogue Enemy
+cd ~/Downloads
+sudo rpm -e rogue-enemy
+sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
 
 # Clean up file
 cd ~/Downloads
