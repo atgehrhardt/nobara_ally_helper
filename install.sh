@@ -35,6 +35,9 @@ wget $ROGUE_ENEMY_URL --content-disposition
 # Extract tar.gz file
 tar xvf $KERNEL_FILE
 
+# Install dependencies for Rogue Enemy 2.0.0
+sudo yum install glibc.i686
+
 # Update Rogue Enemy
 sudo rpm -e rogue-enemy
 sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
@@ -57,9 +60,6 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 
 # Install Corando98's Steam Patch
 curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
-
-# Install dependencies for Rogue Enemy 2.0.0
-sudo yum install glibc.i686
 
 # Remove rogue-enemy.service and re-create with ExecStartPre sleep of 10 seconds
 sudo rm /etc/systemd/system/rogue-enemy.service
