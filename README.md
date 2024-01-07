@@ -7,7 +7,8 @@ This should result in an installation with functional side and back buttons, as 
 I highly recommend activating the TDP limit and setting it to 11 watts outside of games as this will provide a very smooth experience with extremely low wattage. If you leave the wattage uncapped, the governor, even on powersave or balanced mode will tend to use maximum wattage. Implementing an 11 watt limit solves this problem nicely and doesn't affect games as you can always set a different wattage per game.
 
 ***IMPORTANT*** 
-Rogue Enemy 2 may not install due to missing dependencies if your system is not up to date. If you run into this UPDATE YOUR SYSTEM.
+Rogue Enemy 2 may not install due to missing dependencies if your system is not up to date. If you run into this UPDATE YOUR SYSTEM. If you want an
+easy way to update to Nobara 39 you can run this script: curl -sSL https://raw.githubusercontent.com/TaitTechMedia/nobara_ally_helper/master/upgrade_39.sh
 
 ## This script does a few things
 1) Installs kernel 6.6.9-200 from Jlobue10 repo
