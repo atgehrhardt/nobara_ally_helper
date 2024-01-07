@@ -11,8 +11,8 @@ Rogue Enemy 2 may not install due to missing dependencies if your system is not 
 easy way to update to Nobara 39 you can run this script: curl -sSL https://raw.githubusercontent.com/TaitTechMedia/nobara_ally_helper/master/upgrade_39.sh
 
 ## This script does a few things
-1) Installs kernel 6.6.9-200 from Jlobue10 repo
-2) Installs rougenemy 2.0.0-1 from Jlobue10 repo
+1) Installs kernel 6.6.10-200 from Jlobue10 repo
+2) Installs rougenemy 2.1.1-1 from Jlobue10 repo
 3) Adjusts rogue-enemy.service to add a 10 second delay to allow MCU to initialize properly
 4) Installs Deckyloader
 5) Install Asusctl
