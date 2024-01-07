@@ -58,28 +58,6 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install Corando98's Steam Patch
 curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
 
-# Remove rogue-enemy.service and re-create with ExecStartPre sleep of 10 seconds
-sudo rm /etc/systemd/system/rogue-enemy.service
-
-sudo bash -c 'cat << 'EOF' > /etc/systemd/system/rogue-enemy.service
-[Unit]
-Description=ROGueENEMY service
-
-[Service]
-Type=simple
-Nice=-5
-IOSchedulingClass=best-effort
-IOSchedulingPriority=0
-Restart=always
-RestartSec=5
-WorkingDirectory=/usr/bin
-ExecStartPre=/bin/sleep 10
-ExecStart=/usr/bin/rogue-enemy
-
-[Install]
-WantedBy=multi-user.target
-EOF'
-
 # Wifi speed improvement
 echo "@nClientDownloadEnableHTTP2PlatformLinux 0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
 echo "@fDownloadRateImprovementToAddAnotherConnection 1.0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
