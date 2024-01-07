@@ -2,7 +2,7 @@
 
 # Specifies which kernel and rogue-enemy version to download
 KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.4.0/kernel-6.6.10-200.fsync.ally.fc39.x86_64.tar.gz"
-ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.4.0/rogue-enemy-2.0.0-1.fc39.x86_64.rpm"
+ROGUE_ENEMY_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.4.0/rogue-enemy-1.5.4-1.fc39.x86_64.rpm"
 KERNEL_FILE="${KERNEL_URL##*/}"
 KERNEL_NAME="${KERNEL_FILE%.tar.gz}"
 ROGUE_ENEMY_FILE="${ROGUE_ENEMY_URL##*/}"
@@ -35,14 +35,13 @@ wget $ROGUE_ENEMY_URL --content-disposition
 # Extract tar.gz file
 tar xvf $KERNEL_FILE
 
+# Update Rogue Enemy
+sudo rpm -e rogue-enemy
+sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
+
 # Change into RPM directory and install RPMs
 cd RPM
 sudo dnf install -y *.rpm
-
-# Update Rogue Enemy
-cd ~/Downloads
-sudo rpm -e rogue-enemy
-sudo dnf install --assumeyes --skip-broken ~/Downloads/$ROGUE_ENEMY_FILE
 
 # Clean up file
 cd ~/Downloads
