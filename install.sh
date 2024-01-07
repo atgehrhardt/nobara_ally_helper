@@ -35,9 +35,6 @@ wget $ROGUE_ENEMY_URL --content-disposition
 # Extract tar.gz file
 tar xvf $KERNEL_FILE
 
-# Install dependencies for Rogue Enemy 2.0.0
-sudo yum install glibc.i686
-
 # Update Rogue Enemy
 sudo rpm -e rogue-enemy
 sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
