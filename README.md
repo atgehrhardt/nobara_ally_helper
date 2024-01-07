@@ -24,6 +24,4 @@ Open a terminal and run this simple command. It will ask you for your password. 
 ## Reference
 Jlobue10 for his packaging and patching efforts for Nobara: https://github.com/jlobue10/ALLY_Nobara_fixes
 NeroReflex for rouge-enemy: https://github.com/NeroReflex/ROGueENEMY
-mengmeet for his Power Control deckyloader plugin: https://github.com/mengmeet/PowerControl
 Corando98 for his Steam Patch fork: https://github.com/corando98/steam-patch
-AdnanHodzic for his auto-cpufreq: https://github.com/AdnanHodzic/auto-cpufreq
