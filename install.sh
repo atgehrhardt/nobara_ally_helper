@@ -74,7 +74,7 @@ sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\"
 
 # Fix power key not triggering sleep
 if [ -e "/etc/systemd/logind.conf" ]; then
-    sudo sed -i 's/^HandlePowerKey=.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
+    sudo sed -i 's/^#HandlePowerKey=poweroff.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
     echo "HandlePowerKey updated to 'suspend'"
 else
     echo "The configuration file '/etc/systemd/logind.conf' does not exist."
