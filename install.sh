@@ -42,7 +42,7 @@ sudo dnf install -y *.rpm
 # Update Rogue Enemy
 cd ~/Downloads
 sudo rpm -e rogue-enemy
-sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
+sudo dnf install --assumeyes --skip-broken ~/Downloads/$ROGUE_ENEMY_FILE
 
 # Clean up file
 cd ~/Downloads
