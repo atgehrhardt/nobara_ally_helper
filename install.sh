@@ -43,6 +43,27 @@ sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
 sudo systemctl start rogue-enemy.service
 sudo systemctl enable rogue-enemy.service
 
+# Adjust Rogue Enemy config to use Dualsense Edge (to enable back paddles)
+echo "enable_qam = true;
+ff_gain = 255;
+nintendo_layout = false;
+default_gamepad = 1;
+rumble_on_mode_switch = true;
+gamepad_rumble_control = true;
+gamepad_leds_control = true;
+m1m2_mode = 0;
+gyro_to_analog_mapping = 5;
+gyro_to_analog_activation_treshold = 1;
+touchbar = false;
+controller_bluetooth = true;
+dualsense_edge = true;
+swap_y_z = true;
+enable_thermal_profiles_switching = true;
+default_thermal_profile = -1;
+enable_leds_commands = true;" | sudo tee /etc/ROGueENEMY/config.cfg > /dev/null
+
+sudo systemctl restart rogue-enemy.service
+
 # Change into RPM directory and install RPMs
 cd RPM
 sudo dnf install -y *.rpm

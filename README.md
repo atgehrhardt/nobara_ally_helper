@@ -6,17 +6,45 @@ This should result in an installation with functional side and back buttons, as 
 # Note about TDP
 I highly recommend activating the TDP limit and setting it to 11 watts outside of games as this will provide a very smooth experience with extremely low wattage. If you leave the wattage uncapped, the governor, even on powersave or balanced mode will tend to use maximum wattage. Implementing an 11 watt limit solves this problem nicely and doesn't affect games as you can always set a different wattage per game.
 
+# Note about Rogue Enemy
+This tool configures Rogue Enemy to utilize custom settings which:
+1) Enable the back paddles
+2) Disable touch bar emulation
+
+This should work in most games, but can cause issues in certain games (we believe Sony ports). If you would like to revert to the defsult 
+settings which emulate the touch bar and map the back paddles to touch bar presses (this should work with ALL games), simply run the below 
+command. THIS IS ALL ONE SINGLE COMMAND; COPY AND PASTE THE ENTIRE THING:
+
+```
+echo "enable_qam = true;
+ff_gain = 255;
+nintendo_layout = false;
+default_gamepad = 1;
+rumble_on_mode_switch = true;
+gamepad_rumble_control = true;
+gamepad_leds_control = true;
+m1m2_mode = 1;
+gyro_to_analog_mapping = 5;
+gyro_to_analog_activation_treshold = 1;
+touchbar = true;
+controller_bluetooth = true;
+dualsense_edge = false;
+swap_y_z = true;
+enable_thermal_profiles_switching = true;
+default_thermal_profile = -1;
+enable_leds_commands = true;" | sudo tee /etc/ROGueENEMY/config.cfg > /dev/null && sudo systemctl restart rogue-enemy.service
+```
+
 ***IMPORTANT*** 
 Rogue Enemy 2 may not install due to missing dependencies if your system is not up to date. If you run into this UPDATE YOUR SYSTEM. If you want an
-easy way to update to Nobara 39 you can run this script: curl -sSL https://raw.githubusercontent.com/TaitTechMedia/nobara_ally_helper/master/upgrade_39.sh
+easy way to update to Nobara 39 you can run this script: `curl -sSL https://raw.githubusercontent.com/TaitTechMedia/nobara_ally_helper/master/upgrade_39.sh`
 
 ## This script does a few things
 1) Installs kernel 6.6.10-200 from Jlobue10 repo
 2) Installs rougenemy 2.1.1-1 from Jlobue10 repo
-3) Adjusts rogue-enemy.service to add a 10 second delay to allow MCU to initialize properly
-4) Installs Deckyloader
-5) Install Asusctl
-6) Reboots ROG Ally
+3) Installs Deckyloader
+4) Install Asusctl
+5) Reboots ROG Ally
 
 ## Installation
 Open a terminal and run this simple command. It will ask you for your password. Enter this and press 'enter'. It is normal that you do not see your password while typing.
