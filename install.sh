@@ -105,7 +105,7 @@ if [ -e "/etc/systemd/logind.conf" ]; then
             sudo awk '/^\[Login\]/{print; print "Sleep=suspend-then-hibernate"; print "HibernateDelaySec=3h"; next}1' /etc/systemd/logind.conf > temp.txt && sudo mv temp.txt /etc/systemd/logind.conf
             echo "Added 'Sleep=suspend-then-hibernate' and 'HibernateDelaySec=3h' under [Login]"
         else
-            echo "'HibernateDelaySec=3h' already set, not adding."
+            echo "'HibernateDelaySec=15s' already set, not adding."
         fi
     else
         echo "'Sleep=suspend-then-hibernate' already set, not adding."
