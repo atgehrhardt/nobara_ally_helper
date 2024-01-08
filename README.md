@@ -6,21 +6,24 @@ This should result in an installation with functional side and back buttons, as 
 ## This script does a few things
 1) Installs kernel 6.6.10-200 from Jlobue10 repo
 2) Installs rougenemy 2.1.1-1 from Jlobue10 repo
-3) Installs Deckyloader
+3) Installs Deckyloader and DeckySimpleTDP
 4) Installs Asusctl
 5) Installs Extest
 6) Reboots ROG Ally
 
 ## Installation
-Open a terminal and run these commands. They will ask you for your password. Please run the first script, allow the system to restart, then run the
-second script. The order is important as is restarting the system between them.
-    `bash <(curl -sSL https://raw.githubusercontent.com/TaitTechMedia/nobara_ally_helper/master/dependencies.sh)`
+Open a terminal and run this command. It will ask you for your password.
     `bash <(curl -sSL https://raw.githubusercontent.com/TaitTechMedia/nobara_ally_helper/master/install.sh)`
 
 ***IMPORTANT:*** *If you do not have back padals working (You see a DualShock 4 and NOT a DualSense controller in Steam), simply switch to desktop mode, restart the device, and then switch back to game mode and it will show up correctly. You should only ever have to do this if your system dies or you do a full restart.*
 
 # Note about TDP
+DON'T USE BUILT IN TDP LIMITER - USE THE SIMPLEDECKYTDP MENU TO CONTROL TDP
+
 I highly recommend activating the TDP limit and setting it to 11 watts outside of games as this will provide a very smooth experience with extremely low wattage. If you leave the wattage uncapped, the governor, even on powersave or balanced mode will tend to use maximum wattage. Implementing an 11 watt limit solves this problem nicely and doesn't affect games as you can always set a different wattage per game.
+
+Additionally set the lower limit to 11 watts and upper limit to 30 watts. I would REALLY not recommend going above 30 watts as this has the
+potential to cause permenant damage.
 
 # Note about Rogue Enemy
 This tool configures Rogue Enemy to utilize custom settings which:
