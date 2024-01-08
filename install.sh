@@ -95,7 +95,7 @@ sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\"
 
 if [ -e "/etc/systemd/logind.conf" ]; then
     # Update HandlePowerKey line whether it's commented or not, regardless of the following value
-    sudo sed -i 's/^#\?HandlePowerKey=.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
+    sudo sed -i 's/^#\?HandlePowerKey=.*/HandlePowerKey=suspend-then-hibernate/' /etc/systemd/logind.conf
     echo "HandlePowerKey updated to 'suspend'"
 
     # Check if 'Sleep=suspend-then-hibernate' and 'HibernateDelaySec=3h' already exist
