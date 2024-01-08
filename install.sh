@@ -84,6 +84,7 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
 
 # Install Extest
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # Ensure Rust is installed
 cd ~/Downloads
 git clone https://github.com/Supreeeme/extest
 cd extest
