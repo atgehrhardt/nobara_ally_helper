@@ -80,8 +80,8 @@ sudo dnf install -y asusctl
 # Install decky loader
 curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/download/install_release.sh | sh
 
-# Install Corando98's Steam Patch
-curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
+# Install SimpleDeckyTDP
+curl -L https://github.com/aarron-lee/SimpleDeckyTDP/raw/main/install.sh | sh
 
 # Wifi speed improvement
 echo "@nClientDownloadEnableHTTP2PlatformLinux 0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
