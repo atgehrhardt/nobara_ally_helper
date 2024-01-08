@@ -59,7 +59,7 @@ controller_bluetooth = true;
 dualsense_edge = true;
 swap_y_z = true;
 enable_thermal_profiles_switching = true;
-default_thermal_profile = -1;
+default_thermal_profile = 0;
 enable_leds_commands = true;" | sudo tee /etc/ROGueENEMY/config.cfg > /dev/null
 
 sudo systemctl restart rogue-enemy.service
