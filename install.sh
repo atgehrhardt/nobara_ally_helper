@@ -83,6 +83,15 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install Corando98's Steam Patch
 curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
 
+# Install Extest
+cd ~/Downloads
+git clone https://github.com/Supreeeme/extest
+cd extest
+rustup target add i686-unknown-linux-gnu
+cargo build --release
+sudo usermod -a -G input $(whoami)
+bash override_steam_desktop_file.sh
+
 # Wifi speed improvement
 echo "@nClientDownloadEnableHTTP2PlatformLinux 0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
 echo "@fDownloadRateImprovementToAddAnotherConnection 1.0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
