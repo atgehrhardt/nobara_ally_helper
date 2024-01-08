@@ -93,10 +93,24 @@ sudo mkdir -p ~/.config/plasma_mobile-workspace/env/ && sudo echo -e '#!/bin/bas
 # Fingerprint sensor power drain issue fix
 sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\", ATTR{idVendor}==\"1c7a\", ATTR{idProduct}==\"0588\", ATTR{power/control}=\"auto\"" > /etc/udev/rules.d/50-fingerprint.rules'
 
-# Fix power key not triggering sleep
 if [ -e "/etc/systemd/logind.conf" ]; then
-    sudo sed -i 's/^#HandlePowerKey=poweroff.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
+    # Update HandlePowerKey line whether it's commented or not, regardless of the following value
+    sudo sed -i 's/^#\?HandlePowerKey=.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
     echo "HandlePowerKey updated to 'suspend'"
+
+    # Check if 'Sleep=suspend-then-hibernate' and 'HibernateDelaySec=3h' already exist
+    if ! grep -q "Sleep=suspend-then-hibernate" /etc/systemd/logind.conf; then
+        if ! grep -q "HibernateDelaySec=3h" /etc/systemd/logind.conf; then
+            # Add sleep-to-hibernate functionality
+            sudo awk '/^\[Login\]/{print; print "Sleep=suspend-then-hibernate"; print "HibernateDelaySec=3h"; next}1' /etc/systemd/logind.conf > temp.txt && sudo mv temp.txt /etc/systemd/logind.conf
+            echo "Added 'Sleep=suspend-then-hibernate' and 'HibernateDelaySec=3h' under [Login]"
+        else
+            echo "'HibernateDelaySec=3h' already set, not adding."
+        fi
+    else
+        echo "'Sleep=suspend-then-hibernate' already set, not adding."
+    fi
+
 else
     echo "The configuration file '/etc/systemd/logind.conf' does not exist."
 fi
