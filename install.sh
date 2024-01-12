@@ -42,7 +42,7 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 case $app_choice in
     1)
         try:
-            sudo rpm -e rogue-enemy
+            sudo dnf remove -y rogue-enemy
         except:
             print("Rogue Enemy was not installed as it was not on your system.")
         curl -L https://github.com/hhd-dev/hhd/raw/master/install.sh | sh
@@ -54,7 +54,7 @@ case $app_choice in
             curl -L https://github.com/hhd-dev/hhd/raw/master/uninstall.sh | sh
         except:
             print("HHD was not installed as it was not on your system.")
-        sudo rpm -e rogue-enemy
+        sudo dnf remove -y rogue-enemy
         sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
         sudo systemctl start rogue-enemy.service
         sudo systemctl enable rogue-enemy.service
