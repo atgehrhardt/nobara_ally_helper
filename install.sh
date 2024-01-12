@@ -86,14 +86,23 @@ curl -L https://github.com/aarron-lee/SimpleDeckyTDP/raw/main/install.sh | sh
 # KDE Virtual Keyboard Fix
 mkdir -p ~/.config/plasma_mobile-workspace/env/
 echo -e '#!/bin/bash\nunset GTK_IM_MODULE\nunset QT_IM_MODULE' | sudo tee ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
-chmod +x ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
+sudo chmod +x ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
+bash ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
+
+# Fix power key not triggering sleep
+if [ -e "/etc/systemd/logind.conf" ]; then
+    sudo sed -i 's/^#HandlePowerKey=poweroff.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
+    echo "HandlePowerKey updated to 'suspend'"
+else
+    echo "The configuration file '/etc/systemd/logind.conf' does not exist."
+fi
 
 # Fingerprint sensor power drain issue fix
 sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\", ATTR{idVendor}==\"1c7a\", ATTR{idProduct}==\"0588\", ATTR{power/control}=\"auto\"" > /etc/udev/rules.d/50-fingerprint.rules'
 
 # Set grub order to proper kernel as the curren Nobara installation uses 1 version newer than patched kernel
-# sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
-# sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
+sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # Reboot the system
 read -p "Are you ready to reboot your Ally? (y/n): " ready_reboot
