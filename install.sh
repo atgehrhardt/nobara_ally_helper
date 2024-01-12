@@ -29,11 +29,11 @@ fi
 cd ~/Downloads
 
 # Download files using wget
-wget $KERNEL_URL --content-disposition
+# wget $KERNEL_URL --content-disposition
 wget $ROGUE_ENEMY_URL --content-disposition
 
 # Extract tar.gz file
-tar xvf $KERNEL_FILE
+# tar xvf $KERNEL_FILE
 
 # Update Rogue Enemy
 sudo rpm -e rogue-enemy
@@ -65,13 +65,13 @@ enable_leds_commands = true;" | sudo tee /etc/ROGueENEMY/config.cfg > /dev/null
 sudo systemctl restart rogue-enemy.service
 
 # Change into RPM directory and install RPMs
-cd RPM
-sudo dnf install -y *.rpm
+# cd RPM
+# sudo dnf install -y *.rpm
 
 # Clean up file
 cd ~/Downloads
 rm -rf RPM
-rm $KERNEL_FILE
+#rm $KERNEL_FILE
 rm $ROGUE_ENEMY_FILE
 
 # Install asusctl package
@@ -83,42 +83,17 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install SimpleDeckyTDP
 curl -L https://github.com/aarron-lee/SimpleDeckyTDP/raw/main/install.sh | sh
 
-# Wifi speed improvement
-echo "@nClientDownloadEnableHTTP2PlatformLinux 0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
-echo "@fDownloadRateImprovementToAddAnotherConnection 1.0" | sudo tee -a ~/.steam/steam/steam_dev.cfg > /dev/null
-
 # KDE Virtual Keyboard Fix
-sudo mkdir -p ~/.config/plasma_mobile-workspace/env/ && sudo echo -e '#!/bin/bash\nunset GTK_IM_MODULE\nunset QT_IM_MODULE' > ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh && sudo chmod +x ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh && sudo sh ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
+mkdir -p ~/.config/plasma_mobile-workspace/env/
+echo -e '#!/bin/bash\nunset GTK_IM_MODULE\nunset QT_IM_MODULE' | sudo tee ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
+chmod +x ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
 
 # Fingerprint sensor power drain issue fix
 sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\", ATTR{idVendor}==\"1c7a\", ATTR{idProduct}==\"0588\", ATTR{power/control}=\"auto\"" > /etc/udev/rules.d/50-fingerprint.rules'
 
-# Fix power key
-if [ -e "/etc/systemd/logind.conf" ]; then
-    # Update HandlePowerKey line whether it's commented or not, regardless of the following value
-    sudo sed -i 's/^#\?HandlePowerKey=.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
-    echo "HandlePowerKey updated to 'suspend'"
-
-    # Check if 'Sleep=suspend-then-hibernate' and 'HibernateDelaySec=3h' already exist
-    if ! grep -q "Sleep=suspend-then-hibernate" /etc/systemd/logind.conf; then
-        if ! grep -q "HibernateDelaySec=3h" /etc/systemd/logind.conf; then
-            # Add sleep-to-hibernate functionality
-            sudo awk '/^\[Login\]/{print; print "Sleep=suspend-then-hibernate"; print "HibernateDelaySec=3h"; next}1' /etc/systemd/logind.conf > temp.txt && sudo mv temp.txt /etc/systemd/logind.conf
-            echo "Added 'Sleep=suspend-then-hibernate' and 'HibernateDelaySec=3h' under [Login]"
-        else
-            echo "'HibernateDelaySec=3h' already set, not adding."
-        fi
-    else
-        echo "'Sleep=suspend-then-hibernate' already set, not adding."
-    fi
-
-else
-    echo "The configuration file '/etc/systemd/logind.conf' does not exist."
-fi
-
 # Set grub order to proper kernel as the curren Nobara installation uses 1 version newer than patched kernel
-sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
-sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+# sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
+# sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # Reboot the system
 read -p "Are you ready to reboot your Ally? (y/n): " ready_reboot
