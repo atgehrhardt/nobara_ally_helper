@@ -93,6 +93,7 @@ sudo mkdir -p ~/.config/plasma_mobile-workspace/env/ && sudo echo -e '#!/bin/bas
 # Fingerprint sensor power drain issue fix
 sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\", ATTR{idVendor}==\"1c7a\", ATTR{idProduct}==\"0588\", ATTR{power/control}=\"auto\"" > /etc/udev/rules.d/50-fingerprint.rules'
 
+# Fix power key
 if [ -e "/etc/systemd/logind.conf" ]; then
     # Update HandlePowerKey line whether it's commented or not, regardless of the following value
     sudo sed -i 's/^#\?HandlePowerKey=.*/HandlePowerKey=suspend/' /etc/systemd/logind.conf
