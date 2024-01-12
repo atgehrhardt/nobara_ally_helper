@@ -25,44 +25,71 @@ else
     kdialog --error "Sudo authentication failed."
 fi
 
+# User prompt for choosing the application to install
+echo "Select the application to install:"
+echo "1. HDD"
+echo "2. Rogue Enemy"
+echo "3. Neither"
+read -p "Enter your choice (1, 2, or 3): " app_choice
+
 # Change to Downloads directory
 cd ~/Downloads
 
-# Download files using wget
+# Install decky loader
+curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/download/install_release.sh | sh
+
+# Execution based on user choice
+case $app_choice in
+    1)
+        try:
+            sudo rpm -e rogue-enemy
+        except:
+            print("Rogue Enemy was not installed as it was not on your system.")
+        curl -L https://github.com/hhd-dev/hhd/raw/master/install.sh | sh
+        curl -L https://github.com/hhd-dev/hhd-decky/raw/main/install.sh | sh
+        ;;
+    2)
+        wget $ROGUE_ENEMY_URL --content-disposition
+        try:
+            curl -L https://github.com/hhd-dev/hhd/raw/master/uninstall.sh | sh
+        except:
+            print("HHD was not installed as it was not on your system.")
+        sudo rpm -e rogue-enemy
+        sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
+        sudo systemctl start rogue-enemy.service
+        sudo systemctl enable rogue-enemy.service
+        echo "enable_qam = true;
+        ff_gain = 255;
+        nintendo_layout = false;
+        default_gamepad = 1;
+        rumble_on_mode_switch = true;
+        gamepad_rumble_control = true;
+        gamepad_leds_control = true;
+        m1m2_mode = 0;
+        gyro_to_analog_mapping = 5;
+        gyro_to_analog_activation_treshold = 1;
+        touchbar = false;
+        controller_bluetooth = true;
+        dualsense_edge = true;
+        swap_y_z = true;
+        enable_thermal_profiles_switching = true;
+        default_thermal_profile = 1;
+        enable_leds_commands = true;" | sudo tee /etc/ROGueENEMY/config.cfg > /dev/null
+        sudo systemctl restart rogue-enemy.service
+        rm $ROGUE_ENEMY_FILE
+        ;;
+    3)
+        echo "Skipping installation of HDD and Rogue Enemy."
+        ;;
+    *)
+        echo "Invalid choice. Exiting."
+        exit 1
+        ;;
+esac
+
+# Download and extract kernel
 # wget $KERNEL_URL --content-disposition
-wget $ROGUE_ENEMY_URL --content-disposition
-
-# Extract tar.gz file
 # tar xvf $KERNEL_FILE
-
-# Update Rogue Enemy
-sudo rpm -e rogue-enemy
-sudo dnf install --assumeyes ~/Downloads/$ROGUE_ENEMY_FILE
-
-# Start & Enable Rogue Enemy Service
-sudo systemctl start rogue-enemy.service
-sudo systemctl enable rogue-enemy.service
-
-# Adjust Rogue Enemy config to use Dualsense Edge (to enable back paddles)
-echo "enable_qam = true;
-ff_gain = 255;
-nintendo_layout = false;
-default_gamepad = 1;
-rumble_on_mode_switch = true;
-gamepad_rumble_control = true;
-gamepad_leds_control = true;
-m1m2_mode = 0;
-gyro_to_analog_mapping = 5;
-gyro_to_analog_activation_treshold = 1;
-touchbar = false;
-controller_bluetooth = true;
-dualsense_edge = true;
-swap_y_z = true;
-enable_thermal_profiles_switching = true;
-default_thermal_profile = 1;
-enable_leds_commands = true;" | sudo tee /etc/ROGueENEMY/config.cfg > /dev/null
-
-sudo systemctl restart rogue-enemy.service
 
 # Change into RPM directory and install RPMs
 # cd RPM
@@ -72,13 +99,9 @@ sudo systemctl restart rogue-enemy.service
 cd ~/Downloads
 rm -rf RPM
 #rm $KERNEL_FILE
-rm $ROGUE_ENEMY_FILE
 
 # Install asusctl package
 sudo dnf install -y asusctl 
-
-# Install decky loader
-curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/download/install_release.sh | sh
 
 # Install SimpleDeckyTDP
 curl -L https://github.com/aarron-lee/SimpleDeckyTDP/raw/main/install.sh | sh

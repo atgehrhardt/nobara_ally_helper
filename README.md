@@ -5,10 +5,10 @@ This should result in an installation with functional side and back buttons, as 
 
 ## This script does a few things
 1) Installs kernel 6.6.10-200 from Jlobue10 repo
-2) Installs rougenemy 2.1.1-1 from Jlobue10 repo
+2) Installs HHD or rougenemy 2.1.1-1 from Jlobue10 repo
 3) Installs Deckyloader and DeckySimpleTDP
 4) Installs Asusctl
-5) Installs Extest
+5) Installs Extest - WIP
 6) Reboots ROG Ally
 
 ## Installation
@@ -60,6 +60,7 @@ easy way to update to Nobara 39 you can run this script: `curl -sSL https://raw.
 
 ## Reference
 Jlobue10 for his packaging and patching efforts for Nobara: https://github.com/jlobue10/ALLY_Nobara_fixes
+hhd-dev for HHD: https://github.com/hhd-dev/hhd
 NeroReflex for rouge-enemy: https://github.com/NeroReflex/ROGueENEMY
 Corando98 for his Steam Patch fork: https://github.com/corando98/steam-patch
 Supreeeme for his Extest tool: https://github.com/Supreeeme/extest
