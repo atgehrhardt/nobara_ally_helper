@@ -17,13 +17,20 @@ Open a terminal and run this command. It will ask you for your password.
 
 ***IMPORTANT:*** *If you do not have back padals working (You see a DualShock 4 and NOT a DualSense controller in Steam), simply switch to desktop mode, restart the device, and then switch back to game mode and it will show up correctly. You should only ever have to do this if your system dies or you do a full restart.*
 
-# Note about TDP
-DON'T USE BUILT IN TDP LIMITER - USE THE SIMPLEDECKYTDP MENU TO CONTROL TDP
+# Note about SimpleDeckyTDP
+SET THE TDP LIMITS IN SIMPLEDECKYTDP THEN CHECK THE OPTION: "Fix Steam Hardware Controls".
+- Doing this will allow you to utilize the built in TDP slider as normal
 
 I highly recommend activating the TDP limit and setting it to 11 watts outside of games as this will provide a very smooth experience with extremely low wattage. If you leave the wattage uncapped, the governor, even on powersave or balanced mode will tend to use maximum wattage. Implementing an 11 watt limit solves this problem nicely and doesn't affect games as you can always set a different wattage per game.
 
 Additionally set the lower limit to 11 watts and upper limit to 30 watts. I would REALLY not recommend going above 30 watts as this has the
 potential to cause permenant damage.
+
+# Note about refresh rate and VRR
+If you only see 60hz, you need to go into Settings > Display > Enable Unified Frame Limit Management and disable this (it's at the very bottom
+of the menu).
+
+Once done you can set the refresh rate to 120hz (if this doesn't happen automatically). You should also go ahead and enable VRR now as well.
 
 # Note about Rogue Enemy
 This tool configures Rogue Enemy to utilize custom settings which:
