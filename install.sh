@@ -105,7 +105,7 @@ curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
 
 # Adjust Steam Patch configuration
 echo "#For changes to reflect on steamUI, restart steam-patch, and restart steam. (Current mitigation)
-main_enabled = false
+main_enabled = true
 tdp_control = true
 gpu_control = false
 max_tdp = 30               #If using smokeless bios you can push this higher
