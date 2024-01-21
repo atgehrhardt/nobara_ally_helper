@@ -85,17 +85,17 @@ case $app_choice in
 esac
 
 # Download and extract kernel
-# wget $KERNEL_URL --content-disposition
-# tar xvf $KERNEL_FILE
+wget $KERNEL_URL --content-disposition
+tar xvf $KERNEL_FILE
 
 # Change into RPM directory and install RPMs
-# cd RPM
-# sudo dnf install -y *.rpm
+cd RPM
+sudo dnf install -y *.rpm
 
 # Clean up file
-# cd ~/Downloads
-# rm -rf RPM
-# rm $KERNEL_FILE
+cd ~/Downloads
+rm -rf RPM
+rm $KERNEL_FILE
 
 # Install asusctl package
 sudo dnf install -y asusctl 
