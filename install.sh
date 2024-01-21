@@ -119,7 +119,7 @@ nintendo_glyphs: false     #Swaps A <-> B and X <-> Y
 
 
 #Experimental ROG ALLY ONLY
-auto_nkey_recovery = false #Attempts to suspend and resume the device if NKEY is lost" | sudo tee /etc/ROGueENEMY/config.cfg > /dev/null
+auto_nkey_recovery = false #Attempts to suspend and resume the device if NKEY is lost" | sudo tee ~/steam-patch/config.toml > /dev/null
 
 # KDE Virtual Keyboard Fix
 mkdir -p ~/.config/plasma_mobile-workspace/env/
