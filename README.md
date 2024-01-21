@@ -4,8 +4,8 @@ This is a simple script to simplify installation of the latest needed tools to g
 This should result in an installation with functional side and back buttons, as well as all necessary patches and optimizations for Nobara and the Gamescope interface. If you are noticing your Ally freeze when rebooting, simply reboot with it unplugged. Once it boots you can plug it back in.
 
 ## This script does a few things
-1) Installs kernel 6.6.10-200 from Jlobue10 repo
-2) Installs HHD or rougenemy 2.1.1-1 from Jlobue10 repo
+1) ~~Installs kernel 6.7.0-204 from Jlobue10 repo~~
+2) Installs HHD or rougenemy 2.2.1-1 from Jlobue10 repo
 3) Installs Deckyloader and DeckySimpleTDP
 4) Installs Asusctl
 5) Installs Extest - WIP

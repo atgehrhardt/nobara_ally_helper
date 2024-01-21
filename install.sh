@@ -85,17 +85,17 @@ case $app_choice in
 esac
 
 # Download and extract kernel
-wget $KERNEL_URL --content-disposition
-tar xvf $KERNEL_FILE
+# wget $KERNEL_URL --content-disposition
+# tar xvf $KERNEL_FILE
 
 # Change into RPM directory and install RPMs
-cd RPM
-sudo dnf install -y *.rpm
+# cd RPM
+# sudo dnf install -y *.rpm
 
 # Clean up file
-cd ~/Downloads
-rm -rf RPM
-#rm $KERNEL_FILE
+# cd ~/Downloads
+# rm -rf RPM
+# rm $KERNEL_FILE
 
 # Install asusctl package
 sudo dnf install -y asusctl 
@@ -121,7 +121,7 @@ fi
 sudo bash -c 'echo "ACTION==\"add\", SUBSYSTEM==\"usb\", TEST==\"power/control\", ATTR{idVendor}==\"1c7a\", ATTR{idProduct}==\"0588\", ATTR{power/control}=\"auto\"" > /etc/udev/rules.d/50-fingerprint.rules'
 
 # Set grub order to proper kernel as the curren Nobara installation uses 1 version newer than patched kernel
-sudo awk 'NR==1 {$0="GRUB_DEFAULT=1"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
+sudo awk 'NR==1 {$0="GRUB_DEFAULT=0"} {print}' /etc/default/grub > temp_file && sudo mv temp_file /etc/default/grub
 sudo grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # Reboot the system
