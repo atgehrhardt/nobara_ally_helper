@@ -100,26 +100,10 @@ rm $KERNEL_FILE
 # Install asusctl package
 sudo dnf install -y asusctl 
 
-# Install Steam Patch
-curl -L https://github.com/corando98/steam-patch/raw/main/install.sh | sh
+# Install SimpleDeckyTDP
+curl -L https://github.com/aarron-lee/SimpleDeckyTDP/raw/main/install.sh | sh
 
-# Adjust Steam Patch configuration
-echo "#For changes to reflect on steamUI, restart steam-patch, and restart steam. (Current mitigation)
-main_enabled = false
-tdp_control = true
-gpu_control = false
-max_tdp = 30               #If using smokeless bios you can push this higher
-max_gpu = 2700
-
-#Feature toggles
-legacy_tdp = false         #true = ryzenadj, false = ACPI ROG ALLY METHOD
-mapper = false              #Enable disable the QAM and Steam button mapping
-spoof_glyphs = false        #Enable to change PS/Xbox buttons to match SD including Steam Menu and Option menu
-nintendo_glyphs = false     #Swaps A <-> B and X <-> Y
-
-
-#Experimental ROG ALLY ONLY
-auto_nkey_recovery = false #Attempts to suspend and resume the device if NKEY is lost" | sudo tee ~/steam-patch/config.toml > /dev/null
+sudo systemctl disable steam-patch
 
 # KDE Virtual Keyboard Fix
 mkdir -p ~/.config/plasma_mobile-workspace/env/
