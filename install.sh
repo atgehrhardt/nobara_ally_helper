@@ -103,8 +103,6 @@ sudo dnf install -y asusctl
 # Install SimpleDeckyTDP
 curl -L https://github.com/aarron-lee/SimpleDeckyTDP/raw/main/install.sh | sh
 
-sudo systemctl disable steam-patch
-
 # KDE Virtual Keyboard Fix
 mkdir -p ~/.config/plasma_mobile-workspace/env/
 echo -e '#!/bin/bash\nunset GTK_IM_MODULE\nunset QT_IM_MODULE' | sudo tee ~/.config/plasma_mobile-workspace/env/immodule_temp_fix.sh
