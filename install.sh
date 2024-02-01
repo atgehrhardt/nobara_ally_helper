@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specifies which kernel and rogue-enemy version to download
-KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.5.0/kernel-6.7.2-200.fsync.ally.fc39.x86_64.tar.gz"
+KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.5.0/kernel-6.7.3-200.fsync.ally.fc39.x86_64.tar.gz"
 KERNEL_FILE="${KERNEL_URL##*/}"
 KERNEL_NAME="${KERNEL_FILE%.tar.gz}"
 
