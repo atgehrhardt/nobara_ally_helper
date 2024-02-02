@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Specifies which kernel and rogue-enemy version to download
+KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.5.0/kernel-6.7.3-200.fsync.ally.fc39.x86_64.tar.gz"
+KERNEL_FILE="${KERNEL_URL##*/}"
+KERNEL_NAME="${KERNEL_FILE%.tar.gz}"
+
 # Obtain elevated priviledges
 password=$(kdialog --password "Enter your sudo password")
 
@@ -23,6 +28,20 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 
 # Install HHD
 curl -L https://github.com/hhd-dev/hhd-decky/raw/main/install.sh | sh
+
+# Download and extract kernel
+cd ~/Downloads
+wget $KERNEL_URL --content-disposition
+tar xvf $KERNEL_FILE
+
+# Change into RPM directory and install RPMs
+cd RPM
+sudo dnf install -y *.rpm
+
+# Clean up file
+cd ~/Downloads
+rm -rf RPM
+rm $KERNEL_FILE
 
 # Install SimpleDeckyTDP
 curl -L https://github.com/aarron-lee/SimpleDeckyTDP/raw/main/install.sh | sh
