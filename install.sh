@@ -29,12 +29,6 @@ curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/dow
 # Install HHD
 curl -L https://github.com/hhd-dev/hhd-decky/raw/main/install.sh | sh
 
-# Install CSS Loader and Semakusut's ROG Ally Controller theme
-cd $HOME/homebrew/plugins
-git clone https://github.com/DeckThemes/SDH-CssLoader.git
-cd $HOME/homebrew/themes
-git clone https://github.com/semakusut/SBP-ROG-Ally.git
-
 # Download and extract kernel
 cd ~/Downloads
 wget $KERNEL_URL --content-disposition
