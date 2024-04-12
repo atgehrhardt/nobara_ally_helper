@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Specifies which kernel and rogue-enemy version to download
-KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.6.0/kernel-6.7.10-200.fsync.ally.fc39.x86_64.tar.gz"
+KERNEL_URL="https://github.com/jlobue10/ALLY_Nobara_fixes/releases/download/v2.7.0/kernel-6.8.4-200.fsync.ally.fc39.x86_64.tar.gz"
 KERNEL_FILE="${KERNEL_URL##*/}"
 KERNEL_NAME="${KERNEL_FILE%.tar.gz}"
 
@@ -23,10 +23,10 @@ else
     kdialog --error "Sudo authentication failed."
 fi
 
-# Install decky loader
+# Install/update decky loader
 curl -L https://github.com/SteamDeckHomebrew/decky-installer/releases/latest/download/install_release.sh | sh
 
-# Install HHD
+# Install/update HHD
 curl -L https://github.com/hhd-dev/hhd-decky/raw/main/install.sh | sh
 
 # Download and extract kernel
@@ -43,7 +43,7 @@ cd ~/Downloads
 rm -rf RPM
 rm $KERNEL_FILE
 
-# Install SimpleDeckyTDP
+# Install/update SimpleDeckyTDP
 curl -L https://github.com/aarron-lee/SimpleDeckyTDP/raw/main/install.sh | sh
 
 # Reboot the system
