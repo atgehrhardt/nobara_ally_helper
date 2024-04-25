@@ -4,7 +4,7 @@ This is a simple script to simplify installation of the latest needed tools to g
 This should result in an installation with functional side and back buttons, as well as all necessary patches and optimizations for Nobara and the Gamescope interface. If you are noticing your Ally freeze when rebooting, simply reboot with it unplugged. Once it boots you can plug it back in.
 
 ## This script does a few things
-1) Installs kernel 6.8.6-200 from Jlobue10 repo
+1) Installs kernel 6.8.7-200 from Jlobue10 repo
 2) Installs/Updates HHD
 3) Installs Deckyloader/Updates and DeckySimpleTDP
 4) Reboots ROG Ally
